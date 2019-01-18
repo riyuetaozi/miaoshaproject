@@ -19,7 +19,13 @@ IntellijIdea、 Mysql5.6、JDK1.8 、 Maven3.5
  * Spring遇到嵌套事务时，当被嵌套的事务被定义为“PROPAGATION_REQUIRES_NEW”时，
  * 内层Service的方法被调用时，外层方法的事务被挂起；内层事务相对于外层事务是完全独立的，有独立的隔离性等等。
  * 但是要使被嵌套方法PROPAGATION_REQUIRES_NEW事务有效，A和B两个方法不要在同一个类中，在A所在的类中注入B方法所在的类，然后A方法再调用B方法
-
+6、不同环境配置（一般是 正式、测试、开发 三个环境的配置）：
+    Spring Boot 的 Profile可以实现不同环境的配置，配置文件建议使用application.yml的格式
+    （上线不同环境简单的更改application.yml配置文件中 profile的active属性值即可）
+    说明：spring boot相关配置文件加载顺序，application.proerties 比 application.yml先加载
+7、加入了logback日志框架，配置文件为resources下的logback-spring.xml
+    日志框架最好是 门面日志框架 + 具体实现日志框架相结合 （本项目slf4j + logback），有利于维护和各个类的处理方式统一。
+    说明：自定义对外抛出的错误日志信息，不用再打印一遍
 
 项目中注意的细节：
 1、Spring Boot启动类上记得加入 @MapperScan("com.miaoshaproject.dao") ，扫描dao、

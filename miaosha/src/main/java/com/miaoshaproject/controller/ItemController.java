@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/item")
 @CrossOrigin(origins = "*", allowCredentials = "true")
 public class ItemController extends BaseController {
-
     @Autowired
     private ItemService itemService;
 
@@ -49,6 +48,8 @@ public class ItemController extends BaseController {
     @ResponseBody
     public CommonReturnType getItemList(){
         List<ItemModel> itemModelList = itemService.listItem();
+        itemModelList = null;
+        itemModelList.size();
         //使用stream api将List内的ItemModel 转化为 ItemVo
         List<ItemVo> itemVoList = itemModelList.stream().map(itemModel -> {
             ItemVo itemVo = this.convertItemVoFormModel(itemModel);

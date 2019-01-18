@@ -7,6 +7,7 @@
     <groupId>com.miaoshaproject</groupId>
     <artifactId>miaosha</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <name>miaosha</name>
     <!-- FIXME change it to the project's website -->
